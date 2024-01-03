@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>霓虹灯</title>
+    <style>
+        body{
+            background-image: url("sbpk.png");
+            background-size: cover;
+            /* background-attachment 属性用于设置背景图片是否随着页面的滚动而移动
+            scroll - 背景图片会随着元素的内容滚动而滚动。这是默认值。
+
+            fixed - 背景图片固定不动，不会随着页面的其余部分滚动。不过请注意，在移动设备上，出于性能考虑，fixed 通常表现得像 scroll。
+
+            local - 背景图片会随着元素的内容滚动而滚动，但是它是相对于元素本身进行滚动的，这与 scroll 的表现略有不同。
+            */
+            background-attachment: scroll;
+            /* background-repeat: no-repeat; */
+            display: flex;
+            justify-content: center;
+        }
+        .a{
+            position: relative;
+            top:180px;
+            width: 500px;
+            height: 120px;
+            border: solid 10px #fff;
+            box-shadow: 0 0 70px rgb(190, 40, 210);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* 设置鼠标移上去时变成小手形状 */
+            cursor: pointer;
+        }
+        .a::after{
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 120px;
+            box-shadow: 0 0 5px rgba(190,40,210,);
+            background-color: rgba(100,30,225,.4);
+        }
+        .a:hover{
+            /* infinite 重复无限次 */
+            animation: a 1.5s infinite;
+        }
+        /* @keyframes规则命名为a 
+        在0%、34%、68%和100%的时间点，元素将具有白色边框（宽度为10px）和紫色的边框阴影（模糊半径为70px）。
+
+        在17%、51%和85%的时间点，元素的边框将变为半透明的红色（宽度为10px，透明度为50%），边框阴影将变为更亮、更大的半透明红色（模糊半径为90px，透明度为80%）。*/
+        @keyframes a{
+            0%,34%,68%,100%{
+                border: solid 10px #fff;
+                box-shadow: 0 0 70px rgb(190,40,210);
+            }
+            17%,51%,85%{
+                border: solid 10px rgba(255,0,0,.5);
+                box-shadow: 0 0 90px rgba(255,0,0,.8);
+            }
+        }
+        .b,.b::before{
+            z-index:999;
+            color: #fff;
+            position: absolute;
+            font-size: 65px;
+            font-weight: 900;
+            letter-spacing: 12px;
+        }
+        .b::before{
+            content:'GOAT/CSY';
+            text-shadow: -5px -5px 0px rgb(211,250,9),5px 5px 0px rgb(25,10,240);
+            /* 使用缩放的方式创建可见显示取余，括号里的四个参数分别是 top，right，bottom，left  */
+            clip-path: inset(100% 0px 0px 0px);
+        }
+        .a:hover .b::before{
+            /* steps设置连帧动画，值越小越卡顿 */
+            animation: move 1.5s steps(2) infinite;
+        }
+        @keyframes move{
+            0%{
+                /* 上面80%不可见 */
+                clip-path:inset(80% 0px 0px 0px);
+                transform: translate(-20px,-10px);
+            }
+            10%{
+                clip-path:inset(10% 0px 85% 0px);
+                transform: translate(10px,10px);
+            }
+            20%{
+                clip-path:inset(80% 0px 0px 0px);
+                transform: translate(-10px,10px);
+            }
+            30%{
+                clip-path:inset(10% 0px 85px 0px);
+                transform: translate(0px,5px);
+            }
+            40%{
+                clip-path:inset(50% 0px 30% 0px);
+                transform: translate(-5px,0px);
+            }
+            50%{
+                clip-path:inset(10% 0px 0px 0px);
+                transform: translate(5px,0px);
+            }
+            60%{
+                clip-path:inset(40% 0px 30% 0px);
+                transform: translate(5px,10px);
+            }
+            70%{
+                clip-path:inset(50% 0px 30% 0px);
+                transform: translate(-10px,10px);
+            }
+            80%{
+                clip-path:inset(80% 0px 5% 0px);
+                transform: translate(20px,-10px);
+            }
+            90%{
+                clip-path:inset(80% 0px 0px 0px);
+                transform: translate(-10px,0px);
+            }
+            100%{
+                clip-path:inset(80% 0px 0px 0px);
+                transform: translate(0px,0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="a">
+        <div class="b">
+            <span>
+                GOAT/CSY
+            </span>
+        </div>
+    </div>
+</body>
+</html>
