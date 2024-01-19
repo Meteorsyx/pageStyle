@@ -15,3 +15,9 @@
 - `font-size: calc(1.5em + 2px);` 计算字体大小为基于当前字体大小的1.5倍加上2像素。
 - `margin-top: calc(100vh - 2 * 100px);` 计算上边距为视窗高度减去200像素（两倍的100像素）。
 - `width: calc(100% - var(--sidebar-width));` 使用CSS变量 `--sidebar-width` 来计算元素宽度。
+
+
+
+
+
+box-sizing: border-box; /* 包含内边距和边框在内的高度计算 */
