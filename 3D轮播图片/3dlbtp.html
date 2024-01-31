@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D旋转轮播图片</title>
     <style>
-        body{
-            background-color: rgb(154,133,250);
+        body {
+            background-color: rgb(154, 133, 250);
         }
-        .a{
+
+        .a {
             position: relative;
             perspective: 1600px;
             top: 600px;
@@ -16,14 +18,16 @@
             justify-content: center;
             align-items: center;
         }
-        .b{
+
+        .b {
             width: 400px;
             height: 250px;
             position: absolute;
             transform-style: preserve-3d;
-            animation: a 8s infinite cubic-bezier(.7,0,.17,1);
+            animation: a 8s infinite cubic-bezier(.7, 0, .17, 1);
         }
-        .b div{
+
+        .b div {
             position: absolute;
             background-size: cover;
             opacity: .9;
@@ -31,31 +35,39 @@
             height: 250px;
             transform: rotateY(calc(var(--i)*120deg)) translateZ(600px);
         }
-        @keyframes a{
-            0%{
+
+        @keyframes a {
+            0% {
                 transform: translateZ(-100px) rotateY(0)
             }
-            33%{
+
+            33% {
                 transform: translateZ(-100px) rotateY(-120deg)
             }
-            66%{
+
+            66% {
                 transform: translateZ(-100px) rotateY(-240deg)
             }
-            100%{
+
+            100% {
                 transform: translateZ(-100px) rotateY(-360deg)
             }
         }
-        .c{
+
+        .c {
             background-image: url("lovelive.jpg");
         }
-        .d{
+
+        .d {
             background-image: url("甘雨1.jpg");
         }
-        .e{
+
+        .e {
             background-image: url("雷神.jpeg");
         }
     </style>
 </head>
+
 <body>
     <div class="a">
         <div class="b">
@@ -65,4 +77,5 @@
         </div>
     </div>
 </body>
+
 </html>
